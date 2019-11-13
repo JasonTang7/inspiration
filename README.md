@@ -1,2 +1,2 @@
 # inspiration
-A repository with a cool
+A repository with a cool mind .
