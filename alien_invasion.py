@@ -22,7 +22,10 @@ def run_game():
     ship = Ship(ai_setting,screen)
     #创建一个用于存储子弹的编组
     bullets = Group()
-
+    #创建一个用于存储外星人的编组
+    aliens = Group()
+    #创建外星人群
+    gf.create_fleet(ai_setting,screen,ship,aliens)
     #创建一个外星飞船
     alien = Alien(ai_setting,screen)
 
@@ -36,7 +39,7 @@ def run_game():
         #更新子弹
         gf.update_bullets(bullets)
         #重绘屏幕
-        gf.update_screen(ai_setting,screen,ship,bullets,alien)
+        gf.update_screen(ai_setting,screen,ship,bullets,aliens)
 
 
 run_game()
