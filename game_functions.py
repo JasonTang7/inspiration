@@ -1,4 +1,5 @@
 import sys
+from time import sleep
 
 import pygame
 from bullet import Bullet
@@ -57,7 +58,7 @@ def update_screen(ai_setting,screen,ship,bullets,aliens):
     #让最近绘制的屏幕可见
     pygame.display.flip()
 
-def update_bullets(bullets):
+def update_bullets(ai_settings,screen,ship,aliens,bullets):
     """更新子弹的位置，并删除已经消失的子弹"""
     #更新子弹的位置
     bullets.update()
@@ -65,7 +66,17 @@ def update_bullets(bullets):
     for bullet in bullets.copy():
         if bullet.rect.bottom <=0 :
             bullets.remove(bullet)
-    #pint(len(bullets))
+    #print(len(bullets))
+    check_bullet_alien_collisions(ai_settings,screen,ship,aliens,bullets)
+
+def check_bullet_alien_collisions(ai_settings,screen,ship,aliens,bullets):
+    """响应子弹和外星飞船的碰撞"""
+    #检查是否有子弹击中了外星飞船，如果有酒删除相应的子弹和外星飞船;第一个true管删除子弹，第二个true管删除外星飞船
+    collisions = pygame.sprite.groupcollide(bullets,aliens,True,True)
+    if len(aliens) == 0:
+        #删除现在的子弹并新建一群外星人
+        bullets.empty()
+        create_fleet(ai_settings,screen,ship,aliens)
 
 def fire_bullet(ai_settings,screen,ship,bullets):
     """如果还没有到达子弹数量限制，就发射一颗子弹"""
@@ -111,10 +122,32 @@ def get_number_rows(ai_settings,ship_height,alien_height):
     number_rows = int(avaliable_space_y / (2*alien_height))
     return number_rows
 
-def update_aliens(ai_settings,aliens):
+def update_aliens(ai_settings,stats,screen,ship,aliens,bullets):
     """检查是否有外星飞船处于屏幕边缘，并更新外星舰队中所有外星飞船的位置"""
     check_fleet_edges(ai_settings,aliens)
     aliens.update()
+
+    #检测外星飞船和玩家飞船的碰撞
+    if pygame.sprite.spritecollideany(ship,aliens):
+        ship_hit(ai_settings,stats,screen,ship,aliens,bullets)
+        
+
+def ship_hit(ai_settings,stats,screen,ship,aliens,bullets):
+    """响应外星人碰撞了飞船"""
+    #将ships_left减1
+    stats.ships_left -= 1
+
+    #清空外星人和子弹的列表
+    aliens.empty()
+    bullets.empty()
+
+    #创建一群新的外星人，并将飞船放到屏幕低端中央
+    create_fleet(ai_settings,screen,ship,aliens)
+    ship.center_ship()
+
+    #暂停
+    sleep(0.5)
+
 
 def check_fleet_edges(ai_settings,aliens):
     """有外星飞船到达便于时调用下移并转向的函数"""

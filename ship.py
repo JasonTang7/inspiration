@@ -48,6 +48,12 @@ class Ship():
         """在指定位置绘制飞船"""
         self.screen.blit(self.image,self.rect)
 
+    def center_ship(self):
+        """让飞船回到初始位置"""
+        self.center = self.screen_rect.centerx
+        #以下代码待调试
+        #self.centery = self.screen_rect.bottom
+        #self.rect.bottom = self.screen_rect.bottom
 
 
 
