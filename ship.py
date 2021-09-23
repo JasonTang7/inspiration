@@ -52,7 +52,7 @@ class Ship():
         """让飞船回到初始位置"""
         self.center = self.screen_rect.centerx
         #以下代码待调试
-        #self.centery = self.screen_rect.bottom
+        self.centery = self.screen_rect.bottom - (self.rect.height / 2)
         #self.rect.bottom = self.screen_rect.bottom
 
 
