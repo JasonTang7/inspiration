@@ -18,11 +18,13 @@ class Scoreboard():
 
     def prep_score(self):
         """将得分转换成一幅渲染的图像"""
-        score_str = str(self.stats.score)
+        rounded_score = int(round(self.stats.score,-1))
+        score_str = "{:,}".format(rounded_score)
         self.score_img = self.font.render(score_str,True,self.text_color,self.ai_settings.bg_color)
 
         #将得分放在屏幕右上角
         self.score_rect = self.score_img.get_rect()
+        self.screen_rect = self.screen.get_rect()
         self.score_rect.right = self.screen_rect.right - 20
         self.score_rect.top = 20
 
