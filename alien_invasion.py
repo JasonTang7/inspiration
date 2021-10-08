@@ -9,6 +9,7 @@ from alien import Alien
 import game_functions as gf
 from game_stats import GameStats
 from button import Button
+from scoreboard import Scoreboard
 
 def run_game():
     #初始化游戏，并创建一个屏幕对象
@@ -19,8 +20,9 @@ def run_game():
     #创建一个play按钮
     play_button = Button(ai_settings,screen,"Play")
 
-    #创建一个存储游戏统计信息的实例
+    #创建一个存储游戏统计信息的实例，并创建记分牌
     stats = GameStats(ai_settings)
+    sb = Scoreboard(ai_settings,screen,stats)
     #设置背景颜色
     bg_color = ai_settings.bg_color
 
@@ -48,7 +50,7 @@ def run_game():
             #更新外星飞船位置
             gf.update_aliens(ai_settings,stats,screen,ship,aliens,bullets)
         #重绘屏幕
-        gf.update_screen(ai_settings,screen,stats,ship,bullets,aliens,play_button)
+        gf.update_screen(ai_settings,screen,stats,sb,ship,bullets,aliens,play_button)
 
 
 run_game()
