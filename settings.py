@@ -16,6 +16,7 @@ class Settings():
         self.bullets_allowed = 50  #最大子弹数量
         #外星人设置
         self.fleet_drop_speed = 10
+        self.alien_row_pitch = 30
         #加快游戏节奏的速度
         self.speedup_scale = 1.1
         #外星人点数的提高速度
