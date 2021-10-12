@@ -52,7 +52,7 @@ def check_keydown_events(event,ai_settings,screen,stats,ship,bullets):
     elif event.key == pygame.K_DOWN:
         ship.moving_down = True
     elif event.key == pygame.K_SPACE:
-        fire_bullet(ai_settings,screen,ship,bullets)
+        fire_bullet(ai_settings,screen,stats,ship,bullets)
     elif event.key == pygame.K_q:
         write_high_score(stats)
         sys.exit()
@@ -123,10 +123,10 @@ def check_high_score(stats,sb):
         stats.high_score = stats.score
         sb.prep_high_score()
 
-def fire_bullet(ai_settings,screen,ship,bullets):
+def fire_bullet(ai_settings,screen,stats,ship,bullets):
     """如果还没有到达子弹数量限制，就发射一颗子弹"""
     #创建新子弹，并将其加入到编组bullets中
-    if len(bullets) <= ai_settings.bullets_allowed:
+    if stats.game_active and len(bullets) <= ai_settings.bullets_allowed:
         new_bullet = Bullet(ai_settings,screen,ship)
         bullets.add(new_bullet)
 
