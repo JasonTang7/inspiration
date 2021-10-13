@@ -9,7 +9,7 @@ class GameStats():
         #在游戏启动时处于非活跃状态
         self.game_active = False
         #在任何情况下都不应重置最高得分
-        with open('files/high_score.txt') as file_object:
+        with open('alien_invasion/files/high_score.txt') as file_object:
             self.high_score = int(file_object.read())
     
     def reset_stats(self):

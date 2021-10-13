@@ -226,5 +226,5 @@ def reset_game_content(ai_settings,screen,ship,aliens,bullets):
         ship.center_ship()
 
 def write_high_score(stats):
-        with open('files/high_score.txt','w') as file_object:
+        with open('alien_invasion/files/high_score.txt','w') as file_object:
             file_object.write(str(stats.high_score))
