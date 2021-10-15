@@ -30,49 +30,19 @@ s 由英文字母、数字、符号和空格组成
 
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        n = 0
-        if not len(s):
-            return n
-        for i in range(0,len(s),1):
-            for j in range(i+1,len(s),1):
-                if s[i] == s[j]:
-                    if j -i > 2:
-                        for k in range(i+1,j,1):
-                            for l in range(k+1,j,1):
-                                if s[k] == s[l]:
-                                    if k - i +1 > n:
-                                        n = k - i +1
-                                        break
-                                else:
-                                    if l - i + 1> n:
-                                        n = l- i +1 
-                                        continue 
-                            break
-                        break
-                    elif j - i == 2:
-                        n = 2
-                        break
-                    else:
-                        n = 1
-                        break
-                else:
-                    if j -i > 1:
-                        for k in range(i+1,j,1):
-                            for l in range(k+1,j+1,1):
-                                if s[k] == s[l]:
-                                    if k - i + 1> n:
-                                        n = k - i +1
-                                        break
-                                else:
-                                    if l - i +1> n:
-                                        n = l- i +1
-                                        continue
-                            break
-                        
-                    else:
-                        continue
-
-        return n
+        n = len(s)
+        if n <= 1: return n
+        max_len, window = 0, set()
+        left = right = 0
+        while right < n:
+            if s[right] not in window:
+                max_len = max(max_len, right - left + 1)
+                window.add(s[right])
+                right += 1
+            else:
+                window.remove(s[left])
+                left += 1
+        return max_len
 
 sol = Solution()
 answer = sol.lengthOfLongestSubstring("abcabcbb")
