@@ -39,3 +39,27 @@ s 仅由括号 '()[]{}' 组成
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 """
 
+class Solution:
+    def isValid(self, s: str) -> bool:
+        if len(s) % 2 == 1:
+            return False
+        
+        pairs = {
+            ")":"(",
+            "]":"[",
+            "}":"{",
+        }
+
+        stack = list()
+        for ch in s:
+            if ch in pairs:
+                if not stack or stack[-1] != pairs[ch]:
+                    return False
+                stack.pop()
+            else:
+                stack.append(ch)
+        return not stack
+
+sol = Solution()
+anwser = sol.isValid("{[]}")
+print(anwser)
