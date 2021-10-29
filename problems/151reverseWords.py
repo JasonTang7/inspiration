@@ -42,22 +42,4 @@
 
 class Solution:
     def reverseWords(self, s: str) -> str:
-        wi = []
-        words = []
-        s = ''
-        for i in range(0,len(s),1):
-            if s[i] != " ":
-                wi.append(i)
-            else:
-                if len(wi) > 0:
-                    words.append(wi[min(wi),max(wi)])
-                    wi.clear()
-        rewords = words[-1:-len(wi):-1]
-        for i in range(0,len(rewords),1):
-            s = s + rewords[i]
-            if i == len(rewords)-1:
-                return s
-            else:
-                s = s+' '
-
-
+        return " ".join(reversed(s.split()))
