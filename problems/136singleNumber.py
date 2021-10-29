@@ -19,5 +19,15 @@
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 """
 
+from typing import List
+
+
 class Solution:
     def singleNumber(self, nums: List[int]) -> int:
+        sN = []
+        for i in range(0,len(nums),1):
+            if nums[i] not in sN:
+                sN.append(nums[i])
+            else:
+                sN.remove(nums[i])
+        return sN[0]
