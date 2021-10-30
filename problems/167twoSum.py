@@ -33,6 +33,8 @@ numbers 按 非递减顺序 排列
 链接：https://leetcode-cn.com/problems/two-sum-ii-input-array-is-sorted
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。"""
 
+
+"""
 class Solution:
     def twoSum(self, numbers: List[int], target: int) -> List[int]:
         index = []
@@ -42,3 +44,18 @@ class Solution:
                     index.append(i+1)
                     index.append(j+1)
                     return index
+"""        
+
+class Solution:
+    def twoSum(self, numbers: List[int], target: int) -> List[int]:
+        for i in range(len(numbers)):
+            low,high = i+1,len(numbers)-1
+            while low <= high:
+                mid = (low + high) // 2
+                if numbers[mid] == target - numbers[i]:
+                    return[i+1,mid+1]
+                elif numbers[mid] < target - numbers[i]:
+                    low = mid + 1
+                else:
+                    high = mid -1
+        return [-1,-1]
