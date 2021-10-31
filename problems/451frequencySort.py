@@ -54,7 +54,7 @@ class Solution:
                 if s[i] == s[j]:
                     a = a+1
             times.append(a)
-        sorttimes = times
+        sorttimes = times[:]
         sorttimes.sort(reverse=True)
         for i in range(len(sorttimes)):
             for j  in range(len(times)):
