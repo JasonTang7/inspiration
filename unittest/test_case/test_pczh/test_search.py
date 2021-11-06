@@ -1,7 +1,7 @@
 import unittest
 from time import sleep
 from selenium import webdriver
-from operation import functions
+from functions import homepage
 
 class TestSearch(unittest.TestCase):
     """YAMI PC中文站 搜索 自动化测试"""
@@ -13,10 +13,9 @@ class TestSearch(unittest.TestCase):
     def test_search_key_word(self):
         """通过关键字搜索"""
         key_word = "螺蛳粉"
-        functions.search(self.driver,self.pc_url,key_word)
+        homepage.search(self.driver,self.pc_url,key_word)
         self.assertEqual(self.driver.title,key_word+" | 亚米")
         sleep(2)
-
 
     @classmethod
     def tearDownClass(cls):

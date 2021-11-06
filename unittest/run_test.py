@@ -2,7 +2,7 @@ import re
 from typing import SupportsBytes
 import unittest
 from unittest import runner
-from HTMLTestRunner import HTMLTestRunner
+from utility.HTMLTestRunner import HTMLTestRunner
 import time
 import yagmail
 import config
