@@ -24,3 +24,7 @@ def switchWindow(driver,i):
 def slideScroll(driver,targetElem):
     element = driver.find_element(By.XPATH,targetElem)
     driver.execute_script("arguments[0].scrollIntoView();", element)
+
+def sendkeys(driver,targetElem,key_word):
+    element = driver.find_element(By.XPATH,targetElem)
+    element.send_keys(key_word)

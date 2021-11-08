@@ -3,6 +3,7 @@ import unittest
 from time import sleep
 from selenium import webdriver
 from functions import pczhpage,common,pczhpageElements
+import config
 
 class TestSearch(unittest.TestCase):
     """YAMI PC中文站 主流程自动化测试"""
@@ -62,4 +63,21 @@ class TestSearch(unittest.TestCase):
         #    common.getweb(self.driver,"https://www.yamibuy.com/zh/p/liuzhou-guangxi-specialty-luosifen-pickle-flavor-noodles-280g-no-quail-egg-random-version/1021006541")
         #    self.test_3addcart()
         sleep(2)
+    
+    def test_4viewcart(self):
+        """查看购物车"""
+        common.elementclick(self.driver,pczhpageElements.item_viewcart)
+        sleep(2)
+        type = 'data-scene'
+        text = common.getattribute(self.driver,pczhpageElements.cart_scene,type)
+        self.assertEqual(text,"cart_main")
+        sleep(2)
+    
+    def test_5submit(self):
+        """未登录点击去结算"""
+        common.elementclick(self.driver,pczhpageElements.cart_submit)
+        sleep(2)
+        common.sendkeys(self.driver,pczhpageElements.cus_email,config.cus_email)
+        sleep(2)
+        common.sendkeys(self.driver,pczhpageElements.cus_password,config.cus_password)
 

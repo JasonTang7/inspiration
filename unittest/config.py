@@ -5,3 +5,5 @@ to = [
 ]
 cc=[]
 bcc=[]
+cus_email = "autotesting@yamibuy.com"
+cus_password ="111111"
