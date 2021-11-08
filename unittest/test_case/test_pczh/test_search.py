@@ -16,11 +16,13 @@ class TestSearch(unittest.TestCase):
     def tearDownClass(cls):
         cls.driver.quit()
 
-    def setUp(self):
-        if self.runNo == 3:
-            print("重试次数已达到阈值：%s次，进行下个用例的测试" %self.runNo)
-            raise RuntimeError('用例执行失败')
-            return
+    #def setUp(self):
+    #    try:
+    #        if self.runNo == 3:
+    #            print("重试次数已达到阈值：%s次，进行下个用例的测试" %self.runNo)
+    #            raise RuntimeError('用例执行失败')
+    #   except RuntimeError:
+    #       raise AssertionError
 
     def test_1search_key_word(self):
         """通过关键字搜索"""
@@ -50,14 +52,14 @@ class TestSearch(unittest.TestCase):
         common.elementclick(self.driver,pczhpageElements.item_addbutton)
         sleep(2)
         verifyText = common.gettext(self.driver,pczhpageElements.item_addedText)
-        try:
-            self.assertEqual(verifyText,"商品已加入购物车11")
-        except AssertionError:
-            self.runNo = self.runNo +1
-            print("结果有误进入重跑机制：%s" %AssertionError)
-            sleep(3)
-            self.test_1search_key_word()
-
-            
+        #try:
+        self.assertEqual(verifyText,"商品已加入购物车")
+        #except AssertionError:
+        #    raise AssertionError
+        #    self.runNo = self.runNo +1
+        #    print("结果有误进入重跑机制：%s" %AssertionError)
+        #    sleep(3)
+        #    common.getweb(self.driver,"https://www.yamibuy.com/zh/p/liuzhou-guangxi-specialty-luosifen-pickle-flavor-noodles-280g-no-quail-egg-random-version/1021006541")
+        #    self.test_3addcart()
         sleep(2)
 
