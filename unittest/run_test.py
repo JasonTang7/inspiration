@@ -10,7 +10,7 @@ import config
 #把测试报告作为附件发送到指定邮箱
 def send_mail(report):
     #发件邮箱
-    yag = yagmail.SMTP(user="qa.cn@yamibuy.com",password="xayamibuy.com",host='smtp.gmail.com')
+    yag = yagmail.SMTP(user="qa.cn@yamibuy.com",password="xa@yamibuy.com",host='smtp.gmail.com')
     subject = "自动化测试报告"
     contents = "自动化测试执行完毕，请查看附件中的测试报告。"
     #收件邮箱

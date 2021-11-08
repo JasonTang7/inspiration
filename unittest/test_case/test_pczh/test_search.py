@@ -1,3 +1,4 @@
+import time
 import unittest
 from time import sleep
 from selenium import webdriver
@@ -9,13 +10,25 @@ class TestSearch(unittest.TestCase):
     def setUpClass(cls) :
         cls.driver = webdriver.Chrome()
         cls.pc_url = "https://www.yamibuy.com"
+        cls.runNo =0
     
+    @classmethod
+    def tearDownClass(cls):
+        cls.driver.quit()
+
+    def setUp(self):
+        if self.runNo == 3:
+            print("重试次数已达到阈值：%s次，进行下个用例的测试" %self.runNo)
+            raise RuntimeError('用例执行失败')
+            return
+
     def test_1search_key_word(self):
         """通过关键字搜索"""
         key_word = "螺蛳粉"
         common.getweb(self.driver,self.pc_url)
         sleep(2)
         pczhpage.search(self.driver,key_word)
+        sleep(2)
         self.assertEqual(self.driver.title,key_word+" | 亚米")
         sleep(2)
     
@@ -27,7 +40,7 @@ class TestSearch(unittest.TestCase):
         common.switchWindow(self.driver,i)
         type = 'data-scene'
         text = common.getattribute(self.driver,pczhpageElements.pdp_scene,type)
-        #self.assertEqual(text,"item_detail")
+        self.assertEqual(text,"item_detail")
         sleep(2)
 
 
@@ -37,9 +50,14 @@ class TestSearch(unittest.TestCase):
         common.elementclick(self.driver,pczhpageElements.item_addbutton)
         sleep(2)
         verifyText = common.gettext(self.driver,pczhpageElements.item_addedText)
-        self.assertEqual(verifyText,"商品已加入购物车")
+        try:
+            self.assertEqual(verifyText,"商品已加入购物车11")
+        except AssertionError:
+            self.runNo = self.runNo +1
+            print("结果有误进入重跑机制：%s" %AssertionError)
+            sleep(3)
+            self.test_1search_key_word()
+
+            
         sleep(2)
 
-    @classmethod
-    def tearDownClass(cls):
-        cls.driver.quit()
