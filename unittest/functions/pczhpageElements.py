@@ -1,4 +1,5 @@
-#PC首页搜索
+#PC首页
+monetate_icon="//*[@id='monetate_allinone_lightbox']//i[@class='iconfont icon-close']"
 search_keyword = "//*[@class='search-box']//input[@name='keywords']"
 search_submit ="//*[@class='search-box']//button[@type='submit']"
 
@@ -18,4 +19,5 @@ cart_submit = "//*[@class='cart-checkout clearfix']/a"
 
 #登录页
 cus_email = "//*[@class='left-container float_left']//input[@type='text']"
-cus_password ="//*[@class='left-container float_left']//input[@name='pws']"
+cus_password ="//*[@class='left-container float_left']//input[@class='password-input']"
+password_frame="//*[@class='left-container float_left']//*[@class='light-input-container  wd400']"

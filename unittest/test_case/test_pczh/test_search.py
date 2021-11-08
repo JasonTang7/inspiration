@@ -2,6 +2,7 @@ import time
 import unittest
 from time import sleep
 from selenium import webdriver
+from selenium.webdriver.common.by import By
 from functions import pczhpage,common,pczhpageElements
 import config
 
@@ -29,6 +30,13 @@ class TestSearch(unittest.TestCase):
         """通过关键字搜索"""
         key_word = "螺蛳粉"
         common.getweb(self.driver,self.pc_url)
+        sleep(2)
+        try:
+            monetate_icon = self.driver.find_element(By.XPATH,pczhpageElements.monetate_icon)
+        except:
+            monetate_icon =""
+        if monetate_icon:
+            common.elementclick(self.driver,pczhpageElements.monetate_icon)
         sleep(2)
         pczhpage.search(self.driver,key_word)
         sleep(2)
@@ -79,5 +87,6 @@ class TestSearch(unittest.TestCase):
         sleep(2)
         common.sendkeys(self.driver,pczhpageElements.cus_email,config.cus_email)
         sleep(2)
+        # common.elementclick(self.driver,pczhpageElements.password_frame)
         common.sendkeys(self.driver,pczhpageElements.cus_password,config.cus_password)
-
+        sleep(2)
