@@ -5,6 +5,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from functions import pczhpage,common,pczhpageElements
 import config
+import requests
 
 class TestSearch(unittest.TestCase):
     """YAMI PC中文站 主流程自动化测试"""
@@ -24,7 +25,7 @@ class TestSearch(unittest.TestCase):
     #            raise RuntimeError('用例执行失败')
     #   except RuntimeError:
     #       raise AssertionError
-
+    
     def test_1search_key_word(self):
         """通过关键字搜索"""
         self.driver.implicitly_wait(10)
@@ -55,7 +56,7 @@ class TestSearch(unittest.TestCase):
         self.assertEqual(text,"item_detail")
         #sleep(2)
 
-
+    
     def test_3addcart(self):
         """详情页加购"""
         self.driver.implicitly_wait(10)
@@ -64,8 +65,9 @@ class TestSearch(unittest.TestCase):
         sleep(2)
         verifyText = common.gettext(self.driver,pczhpageElements.item_addedText)
         #try:
-        self.assertEqual(verifyText,"商品已加入购物车")
+        self.assertEqual(verifyText,"商品已加入购物车1")
         #except AssertionError:
+        #    raise
         #    raise AssertionError
         #    self.runNo = self.runNo +1
         #    print("结果有误进入重跑机制：%s" %AssertionError)
@@ -73,6 +75,7 @@ class TestSearch(unittest.TestCase):
         #    common.getweb(self.driver,"https://www.yamibuy.com/zh/p/liuzhou-guangxi-specialty-luosifen-pickle-flavor-noodles-280g-no-quail-egg-random-version/1021006541")
         #    self.test_3addcart()
         #sleep(2)
+    
     
     def test_4viewcart(self):
         """查看购物车"""
@@ -94,3 +97,10 @@ class TestSearch(unittest.TestCase):
         # common.elementclick(self.driver,pczhpageElements.password_frame)
         common.sendkeys(self.driver,pczhpageElements.cus_password,config.cus_password)
         #sleep(2)
+
+    def test_6login(self):
+        """通过接口实现用户登陆"""
+        url="https://customer.yamibuy.com/api/users/login"
+        data ={"params":{"email":"jason.tang@yamibuy.com","pwd":"111111","isRest":1}}
+        res = requests.post(url=url,data=data)
+        
