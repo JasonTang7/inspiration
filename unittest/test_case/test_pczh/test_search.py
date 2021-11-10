@@ -1,11 +1,14 @@
 import time
 import unittest
 from time import sleep
+from unittest.case import skip
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from functions import pczhpage,common,pczhpageElements
 import config
 import requests
+import json
+
 
 class TestSearch(unittest.TestCase):
     """YAMI PC中文站 主流程自动化测试"""
@@ -17,6 +20,7 @@ class TestSearch(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         cls.driver.quit()
+
 
     #def setUp(self):
     #    try:
@@ -65,7 +69,7 @@ class TestSearch(unittest.TestCase):
         sleep(2)
         verifyText = common.gettext(self.driver,pczhpageElements.item_addedText)
         #try:
-        self.assertEqual(verifyText,"商品已加入购物车1")
+        self.assertEqual(verifyText,"商品已加入购物车")
         #except AssertionError:
         #    raise
         #    raise AssertionError
@@ -98,9 +102,25 @@ class TestSearch(unittest.TestCase):
         common.sendkeys(self.driver,pczhpageElements.cus_password,config.cus_password)
         #sleep(2)
 
+        
+    @unittest.skip("暂未调通，添加cookie后，刷新页面，不是登录状态")
     def test_6login(self):
         """通过接口实现用户登陆"""
-        url="https://customer.yamibuy.com/api/users/login"
-        data ={"params":{"email":"jason.tang@yamibuy.com","pwd":"111111","isRest":1}}
-        res = requests.post(url=url,data=data)
-        
+        login_url="https://customer.yamibuy.com/api/users/login"
+        # header = {"Cookie":"ymb_tnimager=EKTaL8%2BMHEMNoM2ChNe4hw%3D%3D",
+        # "Cache-Control":"no-cache",
+        # "Postman-Token":"<calculated when request is sent>",
+        # "Content-Type":"application/json",
+        # "Content-Length":"<calculated when request is sent>",
+        # "Host":"<calculated when request is sent>",
+        # "Connection":"keep-alive"}
+        body_data_json ={"params": {"email": "autotesting@yamibuy.com","pwd": "111111","imagePosition": 66,"isRest": 1}}
+        response = requests.post(url=login_url,json=body_data_json,verify=False)
+        json_obj = json.loads(response.content)
+        token = json_obj['data']['token']
+        # self.driver.get("https://trade.yamibuy.com/zh/cart")
+        self.driver.delete_cookie("YMB_TK")
+        self.driver.add_cookie({'name':'YMB_TK', 'value':token})
+        sleep(2)
+        self.driver.refresh()
+        sleep(15)
