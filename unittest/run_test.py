@@ -33,4 +33,4 @@ if __name__ == '__main__':
     fp.close()
     
     #发送报告
-    send_mail(html_report)
+    # send_mail(html_report)
