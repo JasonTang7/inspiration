@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="0" skipped="0" tests="1" time="20.524" timestamp="2021-11-12T00:29:51.947652" hostname="DESKTOP-LH3QL7K"><testcase classname="test_case.test_pczh.test_mainsteam.Test_Search" name="test_1search_key_word" time="20.425" /></testsuite></testsuites>
