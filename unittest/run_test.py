@@ -7,6 +7,8 @@ import time
 import yagmail
 import config
 
+"""该框架不是典型的po模式，如果想变成po模式，需要再对functions下和testcase下的文件进行优化，实现分层"""
+
 #把测试报告作为附件发送到指定邮箱
 def send_mail(report):
     #发件邮箱
