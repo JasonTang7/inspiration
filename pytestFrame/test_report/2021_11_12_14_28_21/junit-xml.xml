@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite errors="0" failures="2" hostname="DESKTOP-JS1DTAL" name="pytest" skipped="0" tests="3" time="141.736" timestamp="2021-11-12T14:28:21.537468"><testcase classname="test_case.test_pczh.test_mainsteam.Test_Search" name="test_1search_key_word[case1]" time="21.790" /><testcase classname="test_case.test_pczh.test_mainsteam.Test_Search" name="test_1search_key_word[case2]" time="39.109"><failure message="selenium.common.exceptions.NoSuchElementException: Message: ❌ Find 0 elements through: xpath=//*[@class='search-box']//input[@name='keywords']">self = &lt;test_case.test_pczh.test_mainsteam.Test_Search object at 0x05324EF0&gt;, name = '2', key_words = '面膜'
+browser = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session="ed876ea8111f5a73a73a9a06197ab032")&gt;
+
+    @pytest.mark.parametrize(
+        "name,key_words",
+        [("1","螺蛳粉"),
+        ("2","面膜"),
+        ("3","方便面"),
+        ],
+        ids=["case1","case2","case3"]
+    )
+    # @pytest.mark.parametrize(
+    #     "name,key_words",
+    #     get_data(base_path + "/test_dir/data/data_file.json" )
+    # )
+    def test_1search_key_word(self,name, key_words,browser):
+        """首页关键字搜索"""
+        page = Home_page(browser)
+        page.get(StaticConfig.pchome_url)
+        try:
+            page.monetate_icon.click()
+        except:
+            pass
+&gt;       page.search_input = key_words
+
+test_case\test_pczh\test_mainsteam.py:49: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+C:\Users\tangm\AppData\Local\Programs\Python\Python37-32\lib\site-packages\poium\page_objects.py:98: in __set__
+    self.send_keys(value)
+C:\Users\tangm\AppData\Local\Programs\Python\Python37-32\lib\site-packages\poium\page_objects.py:227: in send_keys
+    elem = self.__get_element(self.k, self.v)
+C:\Users\tangm\AppData\Local\Programs\Python\Python37-32\lib\site-packages\poium\page_objects.py:155: in __get_element
+    self.__find_element((By.XPATH, value))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;poium.page_objects.Element object at 0x041FB2F0&gt;, elem = ('xpath', "//*[@class='search-box']//input[@name='keywords']")
+
+    def __find_element(self, elem):
+        """
+        Find if the element exists.
+        """
+        for i in range(self.timeout):
+            try:
+                elems = self.__elements(elem[0], elem[1])
+            except FunctionTimedOut:
+                elems = []
+    
+            if len(elems) == 1:
+                logging.info("✅ Find element: {by}={value} ".format(
+                    by=elem[0], value=elem[1]))
+                break
+            elif len(elems) &gt; 1:
+                logging.info("❓ Find {n} elements through: {by}={value}".format(
+                    n=len(elems), by=elem[0], value=elem[1]))
+                break
+            else:
+                sleep(1)
+        else:
+            error_msg = "❌ Find 0 elements through: {by}={value}".format(by=elem[0], value=elem[1])
+            logging.error(error_msg)
+&gt;           raise NoSuchElementException(error_msg)
+E           selenium.common.exceptions.NoSuchElementException: Message: ❌ Find 0 elements through: xpath=//*[@class='search-box']//input[@name='keywords']
+
+C:\Users\tangm\AppData\Local\Programs\Python\Python37-32\lib\site-packages\poium\page_objects.py:128: NoSuchElementException</failure></testcase><testcase classname="test_case.test_pczh.test_mainsteam.Test_Search" name="test_1search_key_word[case3]" time="46.501"><failure message="selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element &lt;button type=&quot;submit&quot; style=&quot;&quot;&gt;...&lt;/button&gt; is not clickable at point (816, 40). Other element would receive the click: &lt;div id=&quot;monetate_lightbox_mask&quot; style=&quot;background-color: rgb(0, 0, 0); height: calc(100% + 5000px); left: 0px; margin: 0px; padding: 0px; position: fixed; top: 0px; width: 100%; opacity: 0.5; display: block; transition: opacity 0.5s ease 0s;&quot;&gt;&lt;/div&gt;&#10;  (Session info: chrome=95.0.4638.69)">self = &lt;test_case.test_pczh.test_mainsteam.Test_Search object at 0x04288DB0&gt;, name = '3', key_words = '方便面'
+browser = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session="a203e7da4bdd29ba32ec08d7ad3d6a55")&gt;
+
+    @pytest.mark.parametrize(
+        "name,key_words",
+        [("1","螺蛳粉"),
+        ("2","面膜"),
+        ("3","方便面"),
+        ],
+        ids=["case1","case2","case3"]
+    )
+    # @pytest.mark.parametrize(
+    #     "name,key_words",
+    #     get_data(base_path + "/test_dir/data/data_file.json" )
+    # )
+    def test_1search_key_word(self,name, key_words,browser):
+        """首页关键字搜索"""
+        page = Home_page(browser)
+        page.get(StaticConfig.pchome_url)
+        try:
+            page.monetate_icon.click()
+        except:
+            pass
+        page.search_input = key_words
+&gt;       page.search_submit.click()
+
+test_case\test_pczh\test_mainsteam.py:50: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+C:\Users\tangm\AppData\Local\Programs\Python\Python37-32\lib\site-packages\poium\page_objects.py:235: in click
+    elem.click()
+C:\Users\tangm\AppData\Local\Programs\Python\Python37-32\lib\site-packages\selenium\webdriver\remote\webelement.py:80: in click
+    self._execute(Command.CLICK_ELEMENT)
+C:\Users\tangm\AppData\Local\Programs\Python\Python37-32\lib\site-packages\selenium\webdriver\remote\webelement.py:633: in _execute
+    return self._parent.execute(command, params)
+C:\Users\tangm\AppData\Local\Programs\Python\Python37-32\lib\site-packages\selenium\webdriver\remote\webdriver.py:321: in execute
+    self.error_handler.check_response(response)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;selenium.webdriver.remote.errorhandler.ErrorHandler object at 0x04393EB0&gt;
+response = {'status': 400, 'value': '{"value":{"error":"element click intercepted","message":"element click intercepted: Element ...unk [0x76766739+25]\\n\\tRtlGetFullPathName_UEx [0x778A8AFF+1215]\\n\\tRtlGetFullPathName_UEx [0x778A8ACD+1165]\\n"}}'}
+
+    def check_response(self, response):
+        """
+        Checks that a JSON response from the WebDriver does not have an error.
+    
+        :Args:
+         - response - The JSON response from the WebDriver server as a dictionary
+           object.
+    
+        :Raises: If the response contains an error message.
+        """
+        status = response.get('status', None)
+        if status is None or status == ErrorCode.SUCCESS:
+            return
+        value = None
+        message = response.get("message", "")
+        screen = response.get("screen", "")
+        stacktrace = None
+        if isinstance(status, int):
+            value_json = response.get('value', None)
+            if value_json and isinstance(value_json, basestring):
+                import json
+                try:
+                    value = json.loads(value_json)
+                    if len(value.keys()) == 1:
+                        value = value['value']
+                    status = value.get('error', None)
+                    if status is None:
+                        status = value["status"]
+                        message = value["value"]
+                        if not isinstance(message, basestring):
+                            value = message
+                            message = message.get('message')
+                    else:
+                        message = value.get('message', None)
+                except ValueError:
+                    pass
+    
+        exception_class = ErrorInResponseException
+        if status in ErrorCode.NO_SUCH_ELEMENT:
+            exception_class = NoSuchElementException
+        elif status in ErrorCode.NO_SUCH_FRAME:
+            exception_class = NoSuchFrameException
+        elif status in ErrorCode.NO_SUCH_WINDOW:
+            exception_class = NoSuchWindowException
+        elif status in ErrorCode.STALE_ELEMENT_REFERENCE:
+            exception_class = StaleElementReferenceException
+        elif status in ErrorCode.ELEMENT_NOT_VISIBLE:
+            exception_class = ElementNotVisibleException
+        elif status in ErrorCode.INVALID_ELEMENT_STATE:
+            exception_class = InvalidElementStateException
+        elif status in ErrorCode.INVALID_SELECTOR \
+                or status in ErrorCode.INVALID_XPATH_SELECTOR \
+                or status in ErrorCode.INVALID_XPATH_SELECTOR_RETURN_TYPER:
+            exception_class = InvalidSelectorException
+        elif status in ErrorCode.ELEMENT_IS_NOT_SELECTABLE:
+            exception_class = ElementNotSelectableException
+        elif status in ErrorCode.ELEMENT_NOT_INTERACTABLE:
+            exception_class = ElementNotInteractableException
+        elif status in ErrorCode.INVALID_COOKIE_DOMAIN:
+            exception_class = InvalidCookieDomainException
+        elif status in ErrorCode.UNABLE_TO_SET_COOKIE:
+            exception_class = UnableToSetCookieException
+        elif status in ErrorCode.TIMEOUT:
+            exception_class = TimeoutException
+        elif status in ErrorCode.SCRIPT_TIMEOUT:
+            exception_class = TimeoutException
+        elif status in ErrorCode.UNKNOWN_ERROR:
+            exception_class = WebDriverException
+        elif status in ErrorCode.UNEXPECTED_ALERT_OPEN:
+            exception_class = UnexpectedAlertPresentException
+        elif status in ErrorCode.NO_ALERT_OPEN:
+            exception_class = NoAlertPresentException
+        elif status in ErrorCode.IME_NOT_AVAILABLE:
+            exception_class = ImeNotAvailableException
+        elif status in ErrorCode.IME_ENGINE_ACTIVATION_FAILED:
+            exception_class = ImeActivationFailedException
+        elif status in ErrorCode.MOVE_TARGET_OUT_OF_BOUNDS:
+            exception_class = MoveTargetOutOfBoundsException
+        elif status in ErrorCode.JAVASCRIPT_ERROR:
+            exception_class = JavascriptException
+        elif status in ErrorCode.SESSION_NOT_CREATED:
+            exception_class = SessionNotCreatedException
+        elif status in ErrorCode.INVALID_ARGUMENT:
+            exception_class = InvalidArgumentException
+        elif status in ErrorCode.NO_SUCH_COOKIE:
+            exception_class = NoSuchCookieException
+        elif status in ErrorCode.UNABLE_TO_CAPTURE_SCREEN:
+            exception_class = ScreenshotException
+        elif status in ErrorCode.ELEMENT_CLICK_INTERCEPTED:
+            exception_class = ElementClickInterceptedException
+        elif status in ErrorCode.INSECURE_CERTIFICATE:
+            exception_class = InsecureCertificateException
+        elif status in ErrorCode.INVALID_COORDINATES:
+            exception_class = InvalidCoordinatesException
+        elif status in ErrorCode.INVALID_SESSION_ID:
+            exception_class = InvalidSessionIdException
+        elif status in ErrorCode.UNKNOWN_METHOD:
+            exception_class = UnknownMethodException
+        else:
+            exception_class = WebDriverException
+        if value == '' or value is None:
+            value = response['value']
+        if isinstance(value, basestring):
+            if exception_class == ErrorInResponseException:
+                raise exception_class(response, value)
+            raise exception_class(value)
+        if message == "" and 'message' in value:
+            message = value['message']
+    
+        screen = None
+        if 'screen' in value:
+            screen = value['screen']
+    
+        stacktrace = None
+        if 'stackTrace' in value and value['stackTrace']:
+            stacktrace = []
+            try:
+                for frame in value['stackTrace']:
+                    line = self._value_or_default(frame, 'lineNumber', '')
+                    file = self._value_or_default(frame, 'fileName', '&lt;anonymous&gt;')
+                    if line:
+                        file = "%s:%s" % (file, line)
+                    meth = self._value_or_default(frame, 'methodName', '&lt;anonymous&gt;')
+                    if 'className' in frame:
+                        meth = "%s.%s" % (frame['className'], meth)
+                    msg = "    at %s (%s)"
+                    msg = msg % (meth, file)
+                    stacktrace.append(msg)
+            except TypeError:
+                pass
+        if exception_class == ErrorInResponseException:
+            raise exception_class(response, message)
+        elif exception_class == UnexpectedAlertPresentException:
+            alert_text = None
+            if 'data' in value:
+                alert_text = value['data'].get('text')
+            elif 'alert' in value:
+                alert_text = value['alert'].get('text')
+            raise exception_class(message, screen, stacktrace, alert_text)
+&gt;       raise exception_class(message, screen, stacktrace)
+E       selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element &lt;button type="submit" style=""&gt;...&lt;/button&gt; is not clickable at point (816, 40). Other element would receive the click: &lt;div id="monetate_lightbox_mask" style="background-color: rgb(0, 0, 0); height: calc(100% + 5000px); left: 0px; margin: 0px; padding: 0px; position: fixed; top: 0px; width: 100%; opacity: 0.5; display: block; transition: opacity 0.5s ease 0s;"&gt;&lt;/div&gt;
+E         (Session info: chrome=95.0.4638.69)
+
+C:\Users\tangm\AppData\Local\Programs\Python\Python37-32\lib\site-packages\selenium\webdriver\remote\errorhandler.py:242: ElementClickInterceptedException</failure></testcase></testsuite></testsuites>

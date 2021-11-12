@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite errors="0" failures="1" hostname="DESKTOP-JS1DTAL" name="pytest" skipped="0" tests="3" time="146.286" timestamp="2021-11-12T13:48:55.113140"><testcase classname="test_case.test_pczh.test_mainsteam.Test_Search" name="test_1search_key_word[case1]" time="23.263" /><testcase classname="test_case.test_pczh.test_mainsteam.Test_Search" name="test_1search_key_word[case2]" time="26.163"><failure message="selenium.common.exceptions.NoSuchElementException: Message: ❌ Find 0 elements through: xpath=//*[@id='monetate_allinone_lightbox']//i[@class='iconfont icon-close']">self = &lt;test_case.test_pczh.test_mainsteam.Test_Search object at 0x0376D210&gt;, name = '2', key_words = '面膜'
+browser = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session="308b7778cadc8d7e45f5fc3da4ba4562")&gt;
+
+    @pytest.mark.parametrize(
+        "name,key_words",
+        [("1","螺蛳粉"),
+        ("2","面膜"),
+        ("3","方便面"),
+        ],
+        ids=["case1","case2","case3"]
+    )
+    def test_1search_key_word(self,name, key_words,browser):
+        page = Home_page(browser)
+        page.get(StaticConfig.pchome_url)
+        try:
+            page.monetate_icon
+        except:
+            page.monetate_icon =""
+        if page.monetate_icon:
+&gt;           page.monetate_icon.click()
+
+test_case\test_pczh\test_mainsteam.py:27: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+C:\Users\tangm\AppData\Local\Programs\Python\Python37-32\lib\site-packages\poium\page_objects.py:233: in click
+    elem = self.__get_element(self.k, self.v)
+C:\Users\tangm\AppData\Local\Programs\Python\Python37-32\lib\site-packages\poium\page_objects.py:155: in __get_element
+    self.__find_element((By.XPATH, value))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;poium.page_objects.Element object at 0x03CC21F0&gt;, elem = ('xpath', "//*[@id='monetate_allinone_lightbox']//i[@class='iconfont icon-close']")
+
+    def __find_element(self, elem):
+        """
+        Find if the element exists.
+        """
+        for i in range(self.timeout):
+            try:
+                elems = self.__elements(elem[0], elem[1])
+            except FunctionTimedOut:
+                elems = []
+    
+            if len(elems) == 1:
+                logging.info("✅ Find element: {by}={value} ".format(
+                    by=elem[0], value=elem[1]))
+                break
+            elif len(elems) &gt; 1:
+                logging.info("❓ Find {n} elements through: {by}={value}".format(
+                    n=len(elems), by=elem[0], value=elem[1]))
+                break
+            else:
+                sleep(1)
+        else:
+            error_msg = "❌ Find 0 elements through: {by}={value}".format(by=elem[0], value=elem[1])
+            logging.error(error_msg)
+&gt;           raise NoSuchElementException(error_msg)
+E           selenium.common.exceptions.NoSuchElementException: Message: ❌ Find 0 elements through: xpath=//*[@id='monetate_allinone_lightbox']//i[@class='iconfont icon-close']
+
+C:\Users\tangm\AppData\Local\Programs\Python\Python37-32\lib\site-packages\poium\page_objects.py:128: NoSuchElementException</failure></testcase><testcase classname="test_case.test_pczh.test_mainsteam.Test_Search" name="test_1search_key_word[case3]" time="41.221" /></testsuite></testsuites>

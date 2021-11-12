@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite errors="2" failures="0" hostname="DESKTOP-JS1DTAL" name="pytest" skipped="0" tests="2" time="0.195" timestamp="2021-11-12T14:14:33.302690"><testcase classname="" name="test_case.test_pczh.test_mainsteam" time="0.000"><error message="collection failure">test_case\test_pczh\test_mainsteam.py:16: in &lt;module&gt;
+    class Test_Search:
+test_case\test_pczh\test_mainsteam.py:39: in Test_Search
+    get_data(base_path + "/test_dir/data/data_file.json" )
+E   TypeError: get_data() missing 1 required positional argument: 'file_path'</error></testcase><testcase classname="pytest" name="internal" time="0.000"><error message="internal error">Traceback (most recent call last):
+  File "C:\Users\tangm\AppData\Local\Programs\Python\Python37-32\lib\site-packages\_pytest\main.py", line 269, in wrap_session
+    session.exitstatus = doit(config, session) or 0
+  File "C:\Users\tangm\AppData\Local\Programs\Python\Python37-32\lib\site-packages\_pytest\main.py", line 322, in _main
+    config.hook.pytest_collection(session=session)
+  File "C:\Users\tangm\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pluggy\hooks.py", line 286, in __call__
+    return self._hookexec(self, self.get_hookimpls(), kwargs)
+  File "C:\Users\tangm\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pluggy\manager.py", line 93, in _hookexec
+    return self._inner_hookexec(hook, methods, kwargs)
+  File "C:\Users\tangm\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pluggy\manager.py", line 87, in &lt;lambda&gt;
+    firstresult=hook.spec.opts.get("firstresult") if hook.spec else False,
+  File "C:\Users\tangm\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pluggy\callers.py", line 208, in _multicall
+    return outcome.get_result()
+  File "C:\Users\tangm\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pluggy\callers.py", line 80, in get_result
+    raise ex[1].with_traceback(ex[2])
+  File "C:\Users\tangm\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pluggy\callers.py", line 187, in _multicall
+    res = hook_impl.function(*args)
+  File "C:\Users\tangm\AppData\Local\Programs\Python\Python37-32\lib\site-packages\_pytest\main.py", line 333, in pytest_collection
+    session.perform_collect()
+  File "C:\Users\tangm\AppData\Local\Programs\Python\Python37-32\lib\site-packages\_pytest\main.py", line 634, in perform_collect
+    self.items.extend(self.genitems(node))
+  File "C:\Users\tangm\AppData\Local\Programs\Python\Python37-32\lib\site-packages\_pytest\main.py", line 811, in genitems
+    yield from self.genitems(subnode)
+  File "C:\Users\tangm\AppData\Local\Programs\Python\Python37-32\lib\site-packages\_pytest\main.py", line 812, in genitems
+    node.ihook.pytest_collectreport(report=rep)
+  File "C:\Users\tangm\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pluggy\hooks.py", line 286, in __call__
+    return self._hookexec(self, self.get_hookimpls(), kwargs)
+  File "C:\Users\tangm\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pluggy\manager.py", line 93, in _hookexec
+    return self._inner_hookexec(hook, methods, kwargs)
+  File "C:\Users\tangm\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pluggy\manager.py", line 87, in &lt;lambda&gt;
+    firstresult=hook.spec.opts.get("firstresult") if hook.spec else False,
+  File "C:\Users\tangm\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pluggy\callers.py", line 208, in _multicall
+    return outcome.get_result()
+  File "C:\Users\tangm\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pluggy\callers.py", line 80, in get_result
+    raise ex[1].with_traceback(ex[2])
+  File "C:\Users\tangm\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pluggy\callers.py", line 187, in _multicall
+    res = hook_impl.function(*args)
+  File "C:\Users\tangm\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pytest_html\plugin.py", line 750, in pytest_collectreport
+    self.append_failed(report)
+  File "C:\Users\tangm\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pytest_html\plugin.py", line 465, in append_failed
+    self._appendrow("Error", report)
+  File "C:\Users\tangm\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pytest_html\plugin.py", line 433, in _appendrow
+    result = self.TestResult(outcome, report, self.logfile, self.config)
+  File "C:\Users\tangm\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pytest_html\plugin.py", line 199, in __init__
+    self.config.hook.pytest_html_results_table_row(report=report, cells=cells)
+  File "C:\Users\tangm\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pluggy\hooks.py", line 286, in __call__
+    return self._hookexec(self, self.get_hookimpls(), kwargs)
+  File "C:\Users\tangm\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pluggy\manager.py", line 93, in _hookexec
+    return self._inner_hookexec(hook, methods, kwargs)
+  File "C:\Users\tangm\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pluggy\manager.py", line 87, in &lt;lambda&gt;
+    firstresult=hook.spec.opts.get("firstresult") if hook.spec else False,
+  File "C:\Users\tangm\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pluggy\callers.py", line 208, in _multicall
+    return outcome.get_result()
+  File "C:\Users\tangm\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pluggy\callers.py", line 80, in get_result
+    raise ex[1].with_traceback(ex[2])
+  File "C:\Users\tangm\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pluggy\callers.py", line 187, in _multicall
+    res = hook_impl.function(*args)
+  File "D:\tangjiasen\WorkAndLearning\python\code\localJasonTang7\pytestFrame\conftest.py", line 23, in pytest_html_results_table_row
+    cells.insert(2, html.td(report.description))
+AttributeError: 'CollectReport' object has no attribute 'description'</error></testcase></testsuite></testsuites>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite errors="0" failures="1" hostname="DESKTOP-JS1DTAL" name="pytest" skipped="0" tests="1" time="57.233" timestamp="2021-11-12T11:28:24.690263"><testcase classname="test_case.test_pczh.test_mainsteam.Test_Search" name="test_1search_key_word" time="54.226"><failure message="AssertionError: assert '螺蛳粉 | 亚米' == '面膜 | 亚米'&#10;  - 面膜 | 亚米&#10;  + 螺蛳粉 | 亚米">self = &lt;test_case.test_pczh.test_mainsteam.Test_Search object at 0x0455C990&gt;, browser = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session="97c2520d05335e1e6f2879f81b0615d2")&gt;, base_url = ''
+
+    def test_1search_key_word(self,browser,base_url):
+        page = Home_page(browser)
+        page.get(StaticConfig.pchome_url)
+        if page.monetate_icon:
+            page.monetate_icon.click()
+        page.search_input.send_keys("螺蛳粉")
+        page.search_submit.click()
+        time.sleep(3)
+&gt;       assert browser.title == "面膜 | 亚米"
+E       AssertionError: assert '螺蛳粉 | 亚米' == '面膜 | 亚米'
+E         - 面膜 | 亚米
+E         + 螺蛳粉 | 亚米
+
+test_case\test_pczh\test_mainsteam.py:19: AssertionError</failure></testcase></testsuite></testsuites>

@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite errors="0" failures="0" hostname="DESKTOP-JS1DTAL" name="pytest" skipped="0" tests="1" time="66.501" timestamp="2021-11-12T11:26:34.651726"><testcase classname="test_case.test_pczh.test_mainsteam.Test_Search" name="test_1search_key_word" time="46.323" /></testsuite></testsuites>
