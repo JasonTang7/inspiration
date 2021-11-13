@@ -32,7 +32,7 @@ def send_mail(report):
     subject = "自动化测试报告"
     contents = "自动化测试执行完毕，请查看附件中的测试报告。"
     #收件邮箱
-    yag.send(StaticConfig.email_cc,subject,contents,report)
+    yag.send(StaticConfig.email_to,subject,contents,report)
     logger.info("邮件已发送！") 
 
 @click.command()
@@ -40,7 +40,7 @@ def send_mail(report):
 #使用命令行工具库click，就不能直接在IDE中调试
 def run(m):
     if m is None or m == "run":
-        logger.info("回归模式，开始执行！")
+        logger.info("开始执行自动化测试！")
         now_time = time.strftime("%Y_%m_%d_%H_%M_%S")
         RunConfig.NEW_REPORT = os.path.join(REPORT_DIR,now_time)
         init_env(RunConfig.NEW_REPORT)
