@@ -26,4 +26,5 @@ class RunConfig():
 class StaticConfig():
     """静态配置"""
     pchome_url = "https://www.yamibuy.com"
+    # pchome_url="https://www.yamibuy.com/zh?invite_code=495852"
     email_to =['jason.tang@yamibuy.com','812227984@qq.com']
