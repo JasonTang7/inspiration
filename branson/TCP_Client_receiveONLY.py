@@ -18,12 +18,14 @@ while True:
     #     break
     # tcpCliSock.send(bytes(data, 'utf-8'))   #客户端发送消息，必须发送字节数组
     data = tcpCliSock.recv(BUFSIZ)   #接收回应消息，接收到的是字节数组
-    with open('GMXW1.txt','a') as f:
-        f.write(data)
-    if not data:   #如果接收服务器信息失败，或没有消息回应
+    with open('GMXW1.txt','a') as f:        #把收到的数据存入文件
+        f.write(str(data))
+    if not data:   #如果接收服务器信息失败，或没有消息回应     （不知道为什么这个步骤不生效）
         break
     print(data.decode('utf-8'))  #打印回应消息，或者str(data,"utf-8")
-
+    flag = input('输入任意字符退出客户端：')
+    if flag:
+        break
 tcpCliSock.close() #关闭客户端socket
 
 
